@@ -19,6 +19,21 @@ from pydantic import BaseModel
 app = FastAPI(title="Vera++")
 START = time.time()
 
+
+@app.get("/")
+def root():
+    return {
+        "bot": "Vera++",
+        "status": "running",
+        "endpoints": [
+            "GET  /v1/healthz",
+            "GET  /v1/metadata",
+            "POST /v1/context",
+            "POST /v1/tick",
+            "POST /v1/reply",
+        ],
+    }
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # DATA STORES
 # ═══════════════════════════════════════════════════════════════════════════════
