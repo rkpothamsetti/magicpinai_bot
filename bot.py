@@ -867,7 +867,7 @@ def _compose_customer_lapsed_hard(cat, m, t, c):
     days_str = f"It's been about {days // 7} weeks" if days else "It's been a while"
 
     body = (
-        f"Hi {cname} 👋 {greeting_from} from {mname} here. "
+        f"Hi {cname}, {greeting_from} from {mname} here. "
         f"{days_str} — happens to everyone, no judgment. "
         f"We've added new programs{focus_str}. "
         f"Want me to hold a free trial spot for you? Reply YES — no commitment, no auto-charge."
@@ -1011,7 +1011,7 @@ def _compose_wedding_followup(cat, m, t, c):
     days_str = f"{days_to_wedding} days to your wedding" if days_to_wedding else "Your wedding is coming up"
 
     body = (
-        f"Hi {cname} 💍 {greeting_from} from {mname} here. "
+        f"Hi {cname}, {greeting_from} from {mname} here. "
         f"{days_str} — perfect window to start {next_step}. "
         f"Want me to block your preferred slot for the first session?"
     )
@@ -1181,7 +1181,7 @@ def handle_reply(body: ReplyBody, conv: dict) -> dict:
         else:
             return {
                 "action": "send",
-                "body": f"Looks like an auto-reply 😊 {greet}, when you see this just reply 'Yes' and I'll pick up.",
+                "body": f"Looks like an auto-reply -- {greet}, when you see this just reply 'Yes' and I'll pick up.",
                 "cta": "binary_yes_no",
                 "rationale": "First auto-reply detected; one explicit prompt to flag for owner.",
             }
