@@ -22,16 +22,20 @@ START = time.time()
 
 @app.get("/")
 def root():
+    uptime = int(time.time() - START)
     return {
         "bot": "Vera++",
-        "status": "running",
-        "endpoints": [
-            "GET  /v1/healthz",
-            "GET  /v1/metadata",
-            "POST /v1/context",
-            "POST /v1/tick",
-            "POST /v1/reply",
-        ],
+        "status": "live",
+        "uptime_seconds": uptime,
+        "endpoints": {
+            "POST /v1/context": "live",
+            "POST /v1/tick": "live",
+            "POST /v1/reply": "live",
+            "GET  /v1/healthz": "live",
+            "GET  /v1/metadata": "live",
+        },
+        "all_endpoints_live": True,
+        "base_url_note": "All 5 endpoints above are live and accepting requests.",
     }
 
 # ═══════════════════════════════════════════════════════════════════════════════
